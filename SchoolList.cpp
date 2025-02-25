@@ -43,6 +43,48 @@ public:
         }
     }
 
+    void deleteByName(const string& name)
+    {
+        if (head == nullptr)
+            return;
+
+        if (head->name == name)
+        {
+            School* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+
+        School* current = head;
+        while (current->next != nullptr && current->next->name != name)
+        {
+            current = current->next;
+        }
+
+        if (current->next != nullptr) {
+            School* temp = current->next;
+            current->next = temp->next;
+            delete temp;
+        }
+
+    }
+
+    void findByName(const string& name)
+    {
+        School* current = head;
+        while (current != nullptr) {
+            if (current->name == name) {
+                cout << "Name: " << current->name << endl;
+                cout << "Address: " << current->address << endl;
+                cout << "City: " << current->city << endl;
+                cout << "State: " << current->state << endl;
+                cout << "County: " << current->county << endl;
+            }
+            current = current->next;
+        }
+    }
+
     void display()
     {
         School* temp = head;
@@ -51,7 +93,7 @@ public:
             cout << temp->name << "," << temp->address << "" << temp->city << "," << temp->state << "," << temp->county << endl;
             temp = temp->next;
         }
-
+        cout << endl;
     }
 
 };
