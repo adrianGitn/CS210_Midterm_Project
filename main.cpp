@@ -16,7 +16,13 @@ int main() {
         list.insertFirst(school);
     }
     list.display();
-    
+
+    list.deleteByName("KELLAR PRIMARY SCHOOL");
+
+    list.display();
+
+    list.findByName("PLEASANT VALLEY MIDDLE SCHOOL");
+
 
 
 
