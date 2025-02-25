@@ -90,7 +90,7 @@ public:
         School* temp = head;
         while (temp != nullptr)
         {
-            cout << temp->name << "," << temp->address << "" << temp->city << "," << temp->state << "," << temp->county << endl;
+            cout << temp->name << "," << temp->address << "," << temp->city << "," << temp->state << "," << temp->county << endl;
             temp = temp->next;
         }
         cout << endl;
