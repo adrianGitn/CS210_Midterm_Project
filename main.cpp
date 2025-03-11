@@ -37,7 +37,15 @@ int main() {
 
         switch (input){
             case(1):
+                cout << "Displaying preorder:  " << endl;
+                bst.preorder();
+
+                cout << "Displaying inorder:  " << endl;
                 bst.inOrder();
+
+                cout << "Displaying preorder:  " << endl;
+                bst.postorder();
+
                 break;
             case(2):
                 cout << "Enter name to find: " << endl;
@@ -49,7 +57,7 @@ int main() {
                 cout << "Enter name to delete: " << endl;
                 cin.ignore();
                 getline(cin, nameInput);
-                //bst.deleteByName(nameInput);
+                bst.deleteByName(nameInput);
                 break;
             default:
                 cout << "Ending process, have a nice day." << endl;
