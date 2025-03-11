@@ -29,8 +29,60 @@ private:
     }
 
     BSTSchool* findNode(BSTSchool* node, string name) {
-        if (node == nullptr || node->name == name) return node;
+        if (node == nullptr)
+        {
+            return node;
+        }
+        if (node->name == name)
+        {
+            cout << "School found." << endl;
+            cout << "Name: " << node->name << endl;
+            cout << "Address: " << node->address << endl;
+            cout << "City: " << node->city << endl;
+            cout << "State: " << node->state << endl;
+            cout << "County: " << node->county << endl;
+        }
+
         return (name < node->name) ? findNode(node->left, name) : findNode(node->right, name);
+    }
+
+    BSTSchool* getSuccessor(BSTSchool* curr){
+        curr = curr->right;
+        while (curr != nullptr && curr->left != nullptr)
+            curr = curr->left;
+        return curr;
+    }
+
+    BSTSchool* deleteNode(BSTSchool* node, string name) {
+        if (node == nullptr) return nullptr;
+
+        if (name < node->name) {
+            node->left = deleteNode(node->left, name);
+        } else if (name > node->name) {
+            node->right = deleteNode(node->right, name);
+        } else {
+
+            if (node->left == nullptr && node->right == nullptr) {
+                delete node;
+                return nullptr;
+            }
+
+            else if (node->left == nullptr) {
+                BSTSchool* temp = node->right;
+                delete node;
+                return temp;
+            } else if (node->right == nullptr) {
+                BSTSchool* temp = node->left;
+                delete node;
+                return temp;
+            }
+            else {
+                BSTSchool* temp = getSuccessor(node->right);
+                node->name = temp->name;
+                node->right = deleteNode(node->right, temp->name);
+            }
+        }
+        return node;
     }
 
     void deleteTree(BSTSchool* node) {
@@ -50,6 +102,11 @@ public:
     bool find(string name) {
         return findNode(root, name) != nullptr;
     }
+
+    void deleteByName(string name) {
+        root = deleteNode(root, name);
+    }
+
 
     void preorder() {
         preorderTraversal(root);
