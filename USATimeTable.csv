@@ -1,0 +1,11 @@
+Data Structure Operation, Dataset Size, Time(microseconds)
+Linked List Insert,164464,64789.7
+Binary Search Tree Insert,164464,1.05181e+06
+Hash Table Insert,164464,169394
+Linked List Search,164464,25106.9
+Binary Search Tree Search,164464,68.775
+Hash Table Search,164464,9654.52
+Linked List Delete,164464,13868
+Binary Search Tree Delete,164464,69.493
+Hash Table Delete,164464,9424.36
+.8
